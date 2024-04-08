@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/css/index.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class = "header">
+            <p>MSSQL API Management App</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Tables</a></li>
+                <li><a href="#">Queries</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+        <div class="workspace">
+            <div class="database-view">
+                <div class = "database-view-header">
+                    <p>Object Explorer</p>
+                </div>
+                <div class = "database-view-body">
+                    <ul class="treeview">
+                        <div><i class="root-api"></i> Database
+                            <ul>
+                                <li onclick="handleItemClick('Child 1')"> <i class="fas fa-database"></i> cap quality</li>
+
+                                <li onclick="handleItemClick('Child 2')"><i class="fas fa-database"></i> couter-bottles quality</li>
+
+                                <li onclick="handleItemClick('Child 3')"><i class="fas fa-database"></i> carton quality</li>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+                <!-- Tree database view goes here -->
+            </div>
+
+            <div class="editor-space">
+                <!-- SQL query editor goes here -->
+            </div>
+
+            <div class="prototype-column">
+                <div class="prototype-column-header">
+                    <p>Prototype Column</p>
+                </div>
+                <div class="prototype-column-body">
+                </div>
+                <!-- Prototype column content goes here -->
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 SQL API Management Studio</p>
+        </div>
+        <script src="" async defer></script>
+    </body>
+</html>
