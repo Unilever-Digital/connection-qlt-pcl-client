@@ -74,6 +74,10 @@ def create_app(test_config=None):
 
     @app.route('/')
     def main():
+        global terminate_thread
+        with thread_lock:
+            terminate_thread = False
+        threading.Thread(target=schedule_api_calls).start()
         return render_template("index.html")
     
     signal.signal(signal.SIGTERM, handle_exit)
