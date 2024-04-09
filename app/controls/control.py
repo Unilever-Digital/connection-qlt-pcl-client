@@ -180,11 +180,11 @@ def cartonToMongo():
                                     port=1433)
         cursor = connection.cursor()
     except:
-        connection = pyodbc.connect(driver="",
-                                    server='localhost',
+        connection = pyodbc.connect(driver="SQL Server",
+                                    server='192.168.2.4',
                                     database='Vision_Mas140',
-                                    uid='sa',  # Thay thế bằng tên người dùng của bạn
-                                    pwd='Password.1',  # Thay thế bằng mật khẩu của bạn
+                                    uid='Control',  # Thay thế bằng tên người dùng của bạn
+                                    pwd='123456',  # Thay thế bằng mật khẩu của bạn
                                     port=1433)
         cursor = connection.cursor()
 
