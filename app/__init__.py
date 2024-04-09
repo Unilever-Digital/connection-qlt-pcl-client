@@ -14,7 +14,7 @@ import time
 import signal
 
 
-terminate_thread = False
+terminate_thread = True
 thread_lock = threading.Lock()
 
 
@@ -60,7 +60,10 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
     from .views.view import blog
+    from .views.event import event
     app.register_blueprint(blog)
+    app.register_blueprint(event)
+
     from .models.dbmodel import db
     db.init_app(app)
     # ensure the instance folder exists
@@ -71,11 +74,6 @@ def create_app(test_config=None):
 
     @app.route('/')
     def main():
-        global terminate_thread
-        with thread_lock:
-            terminate_thread = False
-        
-        threading.Thread(target=schedule_api_calls).start()
         return render_template("index.html")
     
     signal.signal(signal.SIGTERM, handle_exit)
