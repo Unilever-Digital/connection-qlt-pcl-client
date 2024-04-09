@@ -217,3 +217,56 @@ form input[type="submit"]:hover {
 .treeview li:hover {
     color: blue;
 }
+
+.run-button {
+    background-color: #45a049;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.run-button:hover {
+    background-color: #00b32d;
+    /* Darker blue color */
+}
+
+.run-button:active {
+    background-color: #00b32d;
+    border-width: 3px;
+    border-color: #dc3545;
+    /* Darker blue color */
+}
+
+.fa-play {
+    margin-right: 5px;
+    /* Adjust spacing between icon and text */
+}
+
+.stop-button {
+    padding: 5px 10px;
+    font-size: 12px;
+    background-color: #1f55df;
+    /* Change as needed */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.stop-button:active {
+    background-color: #dc3545;
+}
+
+.stop-button:hover {
+    background-color: #dc3545;
+}
+
+.stop-button i {
+    margin-right: 5px;
+}
