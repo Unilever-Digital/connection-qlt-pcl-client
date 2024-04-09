@@ -73,12 +73,11 @@ def tableSqlServerFetch(conn, table_name, columns):
         # Convert rows to a list of dictionaries
         results = []
         for row in rows:
-            result_dict = {col: str(value).strip()
-                           for col, value in zip(columns, row)}
+            result_dict = {col: value for col, value in zip(columns, row)}
             results.append(result_dict)
 
         # Convert the list of dictionaries to JSON
-        return json.dumps(results)
+        return results
     except Exception as e:
         print(e)
         raise
@@ -114,7 +113,7 @@ def tableMongoDBFetch(collection, query=None, projection=None):
             doc.pop('_id', None)
 
         # Convert the list of dictionaries to JSON
-        return json.dumps(rows)
+        return rows
     except Exception as e:
         print(e)
         raise
@@ -141,17 +140,17 @@ def tableMongoDBFetch_100data(collection, query=None, projection=None):
             query = {}
         if projection is None:
             projection = {}
-
+        
         cursor = collection.find(query, projection).limit(
             100)  # Limit to 100 rows
         rows = list(cursor)
-
+        
         # Remove _id field from each document
         for doc in rows:
             doc.pop('_id', None)
 
         # Convert the list of dictionaries to JSON
-        return json.dumps(rows)
+        return rows
     except Exception as e:
         print(e)
         raise
@@ -172,7 +171,7 @@ def schedule_api_calls():
 
 
 def cartonToMongo():
-    connection = pyodbc.connect(driver="ODBC Driver 17 for SQL Server",
+    connection = pyodbc.connect(driver="ODBC Driver 14 for SQL Server",
                                 server='localhost',
                                 database='Vision_Mas140',
                                 uid='sa',  # Thay thế bằng tên người dùng của bạn

@@ -12,10 +12,8 @@ import signal
 import threading
 import os
 
-
 terminate_thread = False
 thread_lock = threading.Lock()
-
 
 def schedule_api_calls():
     global terminate_thread
@@ -28,7 +26,6 @@ def schedule_api_calls():
         time.sleep(20)
 
 event = Blueprint("event", __name__)
-
 
 @event.route("/button_click",  methods=["POST", "GET"])
 def event_schedule():

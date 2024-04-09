@@ -13,7 +13,6 @@ import schedule
 import time
 import signal
 
-
 terminate_thread = True
 thread_lock = threading.Lock()
 
@@ -66,7 +65,7 @@ def create_app(test_config=None):
 
     from .models.dbmodel import db
     db.init_app(app)
-    # ensure the instance folder exists
+    # ensure the instance folder exists 
     try:
         os.makedirs(app.instance_path)
     except OSError:
