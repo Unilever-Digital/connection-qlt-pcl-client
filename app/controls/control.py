@@ -171,13 +171,22 @@ def schedule_api_calls():
 
 
 def cartonToMongo():
-    connection = pyodbc.connect(driver="ODBC Driver 14 for SQL Server",
-                                server='localhost',
-                                database='Vision_Mas140',
-                                uid='sa',  # Thay thế bằng tên người dùng của bạn
-                                pwd='Password.1',  # Thay thế bằng mật khẩu của bạn
-                                port=1433)
-    cursor = connection.cursor()
+    try:
+        connection = pyodbc.connect(driver="ODBC Driver 17 for SQL Server",
+                                    server='localhost',
+                                    database='Vision_Mas140',
+                                    uid='sa',  # Thay thế bằng tên người dùng của bạn
+                                    pwd='Password.1',  # Thay thế bằng mật khẩu của bạn
+                                    port=1433)
+        cursor = connection.cursor()
+    except:
+        connection = pyodbc.connect(driver="",
+                                    server='localhost',
+                                    database='Vision_Mas140',
+                                    uid='sa',  # Thay thế bằng tên người dùng của bạn
+                                    pwd='Password.1',  # Thay thế bằng mật khẩu của bạn
+                                    port=1433)
+        cursor = connection.cursor()
 
     uri = "mongodb+srv://unilever-digital:U2024-digital@cluster0.ixcliyp.mongodb.net/"
     client = MongoClient(uri)
@@ -191,7 +200,6 @@ def cartonToMongo():
     
     for row in rows:
         ID, DateTime, Line, SKUID, ProductName, Barcode, Status, Reject = row
-
         sql_data = {
             "ID": str(ID),
             "DateTime": DateTime,
