@@ -16,20 +16,6 @@ import signal
 terminate_thread = True
 thread_lock = threading.Lock()
 
-
-def schedule_api_calls():
-    global terminate_thread
-    while True:
-        with thread_lock:
-            if terminate_thread:
-                break
-        # Call the processing function here
-        processing()
-        schedule.run_pending()
-        time.sleep(20)
-
-
-
 def handle_exit(signum, frame):
     global terminate_thread
     print("Exiting...")
@@ -73,11 +59,7 @@ def create_app(test_config=None):
 
     @app.route('/')
     def main():
-        global terminate_thread
-        with thread_lock:
-            terminate_thread = False
-        threading.Thread(target=schedule_api_calls).start()
-        return render_template("index.html")
+        return redirect(url_for('event.home'))
     
     signal.signal(signal.SIGTERM, handle_exit)
     signal.signal(signal.SIGINT, handle_exit)

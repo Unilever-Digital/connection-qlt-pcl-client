@@ -271,3 +271,21 @@ form input[type="submit"]:hover {
 .stop-button i {
     margin-right: 5px;
 }
+
+.status-bar {
+    position: absolute;
+    border-radius: 2;
+    border-width: 1px;
+    border-color: black;
+    width: 50px;
+    height: 5px;
+    visibility: visible;
+}
+
+.start-color {
+    background-color: #00b32d;
+}
+
+.end-color {
+    background-color: #f20742;
+}

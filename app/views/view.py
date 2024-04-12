@@ -5,7 +5,7 @@ from flask import (
     jsonify
 )
 from app.models.dbmodel import *
-from app.controls.control import *
+from app.controls.control_pc_central import *
 
 blog = Blueprint("blog", __name__)
 

@@ -6,20 +6,22 @@ import schedule
 import time
 import requests
 
+
 def connectToSqlServer(server, database, username, password):
     try:
         # Establishing the connection
-        conn = pyodbc.connect(driver = "SQL Server", 
-                              server=server, 
+        conn = pyodbc.connect(driver="SQL Server",
+                              server=server,
                               user=username,
-                              password=password, 
+                              password=password,
                               database=database,
-                              port= 1433)
+                              port=1433)
         return conn
     except Exception as e:
         print("Error connecting to SQL Server:", e)
         return None
-    
+
+
 def connectToMongoDB(database):
     try:
         uri = "mongodb+srv://unilever-digital:U2024-digital@cluster0.ixcliyp.mongodb.net/"
@@ -38,7 +40,7 @@ def noSqlTransform(rows):
         table (dataframe)): sql table
     """
     try:
-    
+
         # Convert rows to a list of dictionaries
         results = []
         for row in rows:
@@ -117,7 +119,7 @@ def tableMongoDBFetch(collection, query=None, projection=None):
     except Exception as e:
         print(e)
         raise
-    
+
 
 def tableMongoDBFetch_100data(collection, query=None, projection=None):
     """
@@ -140,11 +142,11 @@ def tableMongoDBFetch_100data(collection, query=None, projection=None):
             query = {}
         if projection is None:
             projection = {}
-        
+
         cursor = collection.find(query, projection).limit(
             100)  # Limit to 100 rows
         rows = list(cursor)
-        
+
         # Remove _id field from each document
         for doc in rows:
             doc.pop('_id', None)
@@ -159,7 +161,7 @@ def tableMongoDBFetch_100data(collection, query=None, projection=None):
 def central_processing():
     try:
        cartonToAppEnginePCL()
-       
+
     except Exception as e:
         print("An error occurred while calling the API:", str(e))
 
@@ -176,16 +178,16 @@ def cartonToAppEnginePCL():
         connection = pyodbc.connect(driver="ODBC Driver 17 for SQL Server",
                                     server='localhost',
                                     database='Vision_Mas140',
-                                    uid='sa', 
-                                    pwd='Password.1', 
+                                    uid='sa',
+                                    pwd='Password.1',
                                     port=1433)
         cursor = connection.cursor()
     except:
         connection = pyodbc.connect(driver="SQL Server",
                                     server='192.168.2.4',
                                     database='Vision_Mas140',
-                                    uid='Control',  
-                                    pwd='123456',  
+                                    uid='Control',
+                                    pwd='123456',
                                     port=1433)
         cursor = connection.cursor()
 
@@ -198,7 +200,7 @@ def cartonToAppEnginePCL():
         "SELECT TOP 1000 ID, DateTime, Line, SKUID, ProductName, Barcode, Status, Reject FROM Table_ResultCarton")
     rows = cursor.fetchall()
     print(rows)
-    
+
     for row in rows:
         ID, DateTime, Line, SKUID, ProductName, Barcode, Status, Reject = row
         sql_data = {
@@ -215,6 +217,3 @@ def cartonToAppEnginePCL():
 
     connection.close()
     client.close()
-
-
-
