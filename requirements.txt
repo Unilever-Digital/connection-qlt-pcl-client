@@ -1,9 +1,7 @@
-flask
-flask_sqlalchemy
 pymssql
 pandas
 numpy
 pyodbc
 openpyxl
 pymongo
-gunicorn
+schedule
