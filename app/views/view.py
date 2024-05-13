@@ -10,12 +10,12 @@ def run_task_schedule():
         try:
             querySqlServer()
             print("loop")
-            time.sleep(10000)  # Sleep for 59 minutes
+            time.sleep(4)  # Sleep for 4 second
         except Exception as e:
             print(e)
-            time.sleep(10)
+            time.sleep(4)
+            
 # Function to stop the background task
-
 def stop_task():
     global background_thread
     if background_thread:
