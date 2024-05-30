@@ -5,4 +5,3 @@ pyodbc
 openpyxl
 pymongo
 schedule
-pillow

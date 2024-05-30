@@ -4,22 +4,18 @@ from app.controls.query import *
 import schedule
 import time
 
-# Function to run the query periodically
-def run_task_schedule():
+def scheduleQuerySqlServer(event=None):
+    def run():
+        querySqlServer()
+        print("loop")
+    schedule.every(59).minutes.do(run)
+
     while True:
-        try:
-            querySqlServer()
-            print("loop")
-            time.sleep(4)  # Sleep for 4 second
-        except Exception as e:
-            print(e)
-            time.sleep(4)
-            
-# Function to stop the background task
+        schedule.run_pending()
+        time.sleep(60)
+
 def stop_task():
-    global background_thread
-    if background_thread:
-        background_thread.cancel()
+    schedule.clear(schedule.ALL_PENDING)
 
 def homeViewQT():
     """
@@ -27,8 +23,9 @@ def homeViewQT():
     """
     from app.templates.index import HomeApp
     root = HomeApp()
+    root.bind("<Expose>", scheduleQuerySqlServer)
     root.protocol("WM_DESTROY", stop_task)
     root.mainloop()
 
-# pyinstaller --onefile --hidden-import schedule --hidden-import pyodbc --hidden-import openpyxl --hidden-import pymongo --hidden-import threading --hidden-import pymssql --hidden-import datetime --hidden-import pillow main.py
+#pyinstaller --onefile --hidden-import schedule --hidden-import pyodbc --hidden-import openpyxl --hidden-import pymongo --hidden-import threading --hidden-import pymssql --hidden-import datetime main.py
 
