@@ -4,6 +4,35 @@ Local app for streamming data to PBI
 ## Requirements:
     requirements.txt
 
+.
+├── README.md                 # README file
+├── app   
+│   └── controls
+│   └── models
+│   └── static                # Public folder
+│     └── images              # Image used by default template
+│         └── png
+│         └── jpg
+│         └── svg
+│     └── css
+│     └── js
+│   └── templates             # Template ui
+│   └── views
+│   └── env.py
+├── main.py                   # running file
+├── .gitignore
+├── build                     # Build directory
+├── database
+├── dist                      # Package app directory
+│   └── main
+│       └── app
+│       └── main.exe
+├── package.json
+├── Dockerfile                # Dockerfile
+├── docker-compose.yml        # docker-compose configuration
+└── ...                       # Other configuration files (prettier, ignore files,...)
+
+
 ### Virual environment
 
     - python -m venv venv
