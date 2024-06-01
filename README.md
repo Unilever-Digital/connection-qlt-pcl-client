@@ -1,9 +1,7 @@
 ## connection-qlt-pcl-client:
 Local app for streamming data to PBI
 
-## Requirements:
-    requirements.txt
-
+## Source
 ```
 .
 ├── README.md                 # README file
@@ -33,6 +31,8 @@ Local app for streamming data to PBI
 ├── docker-compose.yml        # docker-compose configuration
 └── ...                       # Other configuration files (prettier, ignore files,...)
 ```
+## Requirements:
+    requirements.txt
 
 ### Virual environment
 
