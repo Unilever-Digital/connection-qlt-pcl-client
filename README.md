@@ -4,7 +4,7 @@ Local app for streamming data to PBI
 ## Requirements:
     requirements.txt
 
-//
+```
 .
 ├── README.md                 # README file
 ├── app   
@@ -32,7 +32,7 @@ Local app for streamming data to PBI
 ├── Dockerfile                # Dockerfile
 ├── docker-compose.yml        # docker-compose configuration
 └── ...                       # Other configuration files (prettier, ignore files,...)
-
+```
 
 ### Virual environment
 
